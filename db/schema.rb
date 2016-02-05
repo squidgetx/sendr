@@ -11,9 +11,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20160205211737) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "climbers", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "ccs_id"
+    t.integer  "college_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "climbers", ["ccs_id"], name: "index_climbers_on_ccs_id", unique: true, using: :btree
+
+  create_table "climbs", force: :cascade do |t|
+    t.integer  "climber_id"
+    t.integer  "route_id"
+    t.integer  "attempts"
+    t.string   "initials"
+    t.integer  "completed"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "colleges", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "comps", force: :cascade do |t|
+    t.string   "state"
+    t.string   "location"
+    t.date     "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "routes", force: :cascade do |t|
+    t.string   "name"
+    t.string   "color"
+    t.string   "location"
+    t.string   "notes"
+    t.integer  "points"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end
