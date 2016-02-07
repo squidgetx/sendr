@@ -51,12 +51,14 @@ ActiveRecord::Schema.define(version: 20160205211737) do
   end
 
   create_table "routes", force: :cascade do |t|
+    t.integer  "comp_id"
     t.string   "name"
     t.string   "color"
     t.string   "location"
     t.string   "notes"
     t.integer  "points"
-    t.string   "type"
+    t.string   "discipline"
+    t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
