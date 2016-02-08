@@ -14,6 +14,16 @@ class Scoresheet < ActiveRecord::Base
   def init
     self.boulder_score = 0
     self.sport_score = 0
+    self.speed_attempts = 0
+  end
+
+  def speed time
+    return nil if self.speed_attempts == 2
+    if (self.speed > time)
+      self.speed = time
+    end
+    self.speed_attempts += 1
+    self.save
   end
 
 end

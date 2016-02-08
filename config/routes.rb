@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   resources :colleges
 
   get 'scoresheet' => 'scoresheets#index'
+  put 'scoresheet/speed' => 'scoresheets#speed'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
