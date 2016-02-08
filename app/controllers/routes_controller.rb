@@ -52,6 +52,11 @@ class RoutesController < ApplicationController
     @scoresheet = current_scoresheet
     return nil if @scoresheet.nil?
 
+    @comp = @scoresheet.comp
+    if (@comp.state == 'closed')
+      render_error(500, "Competition is closed")
+    end
+
     # Is there already an entry?
     @climb = Climb.where("scoresheet_id = ? AND route_id = ?", @scoresheet.id, @route.id).first
     if @climb.nil?
