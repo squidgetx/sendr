@@ -1,4 +1,5 @@
 class RoutesController < ApplicationController
+  before_action :find_route, except: [:index]
 
   def index
   end
@@ -19,9 +20,39 @@ class RoutesController < ApplicationController
   end
 
   def attempt
+    find_climb
+    @climb.attempts += 1
+    @climb.save
+    render json: @climb
   end
 
   def send
+    find_climb
+    @climb.sent = true
+    @climb.save
+    render json: @climb 
   end
+
+  private
+
+  def find_route
+    @route = Route.find(params[:id])
+  end
+
+  def find_climb
+    # Find the current scoresheet
+    @scoresheet = current_scoresheet
+    return nil if @scoresheet.nil?
+
+    # Is there already an entry?
+    @climb = Climb.where("scoresheet_id = ? AND route_id = ?", @scoresheet.id, @route.id).first
+    if @climb.nil?
+      @climb = Climb.create({
+        route_id: @route.id,
+        scoresheet_id: @scoresheet.id,
+      })
+    end
+  end
+
 
 end

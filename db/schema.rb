@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20160207210429) do
     t.integer  "scoresheet_id"
     t.integer  "route_id"
     t.integer  "attempts"
-    t.string   "initials"
-    t.integer  "completed"
+    t.string   "witness"
+    t.boolean  "sent"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

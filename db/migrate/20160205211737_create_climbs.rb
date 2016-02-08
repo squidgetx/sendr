@@ -4,8 +4,8 @@ class CreateClimbs < ActiveRecord::Migration
       t.integer :scoresheet_id
       t.integer :route_id
       t.integer :attempts
-      t.string :initials
-      t.integer :completed
+      t.string :witness
+      t.boolean :sent
 
       t.timestamps null: false
     end
