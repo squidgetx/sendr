@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160205211737) do
+ActiveRecord::Schema.define(version: 20160207210429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,17 @@ ActiveRecord::Schema.define(version: 20160205211737) do
     t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "scoresheets", force: :cascade do |t|
+    t.integer  "climber_id"
+    t.integer  "comp_id"
+    t.integer  "boulder_score"
+    t.integer  "sport_score"
+    t.float    "speed1"
+    t.float    "speed2"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
 end

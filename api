@@ -1,0 +1,19 @@
+API endpoints
+
+/climbers/new
+- register new climber
+
+/scoresheet
+- pull up current scoresheet
+/route/#id/send
+- also updates score
+/route/#id/attempt
+
+/comp/join
+- join comp, returns scoresheet
+/comp/start
+/comp/open
+/comp/close
+
+
+

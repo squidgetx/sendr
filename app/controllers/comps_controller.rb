@@ -1,6 +1,6 @@
-class CompController < ApplicationController
+class CompsController < ApplicationController
 
-  before_action :find_comp
+  before_action :find_comp, except: [:index]
 
   def index
     # Homepage
@@ -10,9 +10,7 @@ class CompController < ApplicationController
     if current_scoresheet.present?
       redirect to: scoresheets_index_path
     end
-    @comps = JBuilder.new do |json|
-      json.comps Comp.open
-    end
+    @comps = Comp.open
     render json: @comps
   end
 

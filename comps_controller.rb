@@ -1,4 +1,4 @@
-class CompController < ApplicationController
+class CompsController < ApplicationController
 
   before_action :find_comp
 

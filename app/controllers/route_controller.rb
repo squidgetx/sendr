@@ -1,4 +1,7 @@
-class ClimberController < ApplicationController
+class RouteController < ApplicationController
+
+  def index
+  end
 
   def new
   end
@@ -8,14 +11,17 @@ class ClimberController < ApplicationController
 
   def edit
   end
-
+  
   def update
   end
 
   def destroy
   end
-  
-  def login
+
+  def attempt
+  end
+
+  def send
   end
 
 end
