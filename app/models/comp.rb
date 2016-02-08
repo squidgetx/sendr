@@ -3,6 +3,10 @@ class Comp < ActiveRecord::Base
   has_many :scoresheets
   has_many :climbers, through: :scoresheets
 
+  validates :location, presence: true
+  validates :date, presence: true
+  validates :state, presence: true
+
   def join(climber_id)
     # Currently logged in climber
     # joins comp and creates new scoresheet

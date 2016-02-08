@@ -13,6 +13,11 @@ class CompsController < ApplicationController
     @comps = Comp.open
   end
 
+  def show
+    # this is where we see who are the top 3 in
+    # each category
+  end
+
   def new
   end
 

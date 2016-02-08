@@ -4,6 +4,7 @@ class ClimbersController < ApplicationController
   end
   
   def create
+    @climber = Climber.create(climber_params)
   end
 
   def edit

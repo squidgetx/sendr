@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_climber
+    return nil if session[:climber_id].nil?
     Climber.find(session[:climber_id]);
   end
 
