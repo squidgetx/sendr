@@ -1,5 +1,5 @@
 class Climb < ActiveRecord::Base
-  belongs_to :climber
+  belongs_to :scoresheet
   belongs_to :route
 
   def attempt

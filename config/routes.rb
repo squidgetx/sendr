@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :climbers do
-    member do 
+    collection do 
       put 'login'
     end
   end
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :routes do
     member do
       put 'send'
-      put 'login'
+      put 'attempt'
     end
   end
 

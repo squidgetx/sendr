@@ -1,0 +1,19 @@
+<p> This is the scoresheet page</p>
+
+Scoresheet: <%= @scoresheet.to_json %>
+
+<br>
+Routes: 
+
+<%= @routes.each do |route| %>
+  <%= route.to_json %>
+<% end %>
+<br>
+Climbs: 
+<%= @climbs.each do |climb| %>
+  <%= climb.to_json %>
+<% end %>
+
+
+
+

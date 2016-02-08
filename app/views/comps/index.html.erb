@@ -1,0 +1,19 @@
+<p>
+this is the comps index page
+</p>
+<p>
+enter ur ccs number:
+</p>
+<%= form_tag("/climbers/login", method: "put", remote: true, id: 'ccs_login') do %>
+  <%= text_field_tag(:ccs_id) %>
+  <%= submit_tag("enter") %>
+<% end %>
+
+<p> here are the open comps: </p>
+<ul>
+<%= @comps.each do |comp| %>
+  <li><%= comp.location %></li>
+  <li><%= comp.date %></li>
+  <li><a href='/comps/<%= comp.id %>/join' data-method='PUT'>Join</a></li>
+<% end %>
+</ul>

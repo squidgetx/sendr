@@ -6,7 +6,7 @@ class Comp < ActiveRecord::Base
   def join(climber_id)
     # Currently logged in climber
     # joins comp and creates new scoresheet
-    return nil if current_climber.nil?
+    return nil if climber_id.nil?
     return Scoresheet.create({
       comp_id: self.id,
       climber_id: climber_id,

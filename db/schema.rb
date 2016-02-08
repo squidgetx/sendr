@@ -27,13 +27,13 @@ ActiveRecord::Schema.define(version: 20160207210429) do
   add_index "climbers", ["ccs_id"], name: "index_climbers_on_ccs_id", unique: true, using: :btree
 
   create_table "climbs", force: :cascade do |t|
-    t.integer  "climber_id"
+    t.integer  "scoresheet_id"
     t.integer  "route_id"
     t.integer  "attempts"
     t.string   "initials"
     t.integer  "completed"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "colleges", force: :cascade do |t|

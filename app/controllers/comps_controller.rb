@@ -11,7 +11,6 @@ class CompsController < ApplicationController
       redirect to: scoresheets_index_path
     end
     @comps = Comp.open
-    render json: @comps
   end
 
   def new
@@ -42,17 +41,23 @@ class CompsController < ApplicationController
   end
 
   def join
-    return nil if current_climber.nil?
-    # return specific error codes for
-    # closed comp and climber not logged in
+    if current_climber.nil?
+      render_error(500, "Climber not logged in")
+    end
+
+    if (@comp.state == 'closed')
+      render_error(500, "Comp not open")
+    end
+
     scoresheet = @comp.join(current_climber.id)
     session[:scoresheet] = scoresheet.id
+    redirect_to '/scoresheet'
   end
 
   private
 
   def find_comp
-    @comp = Comp.find(comp_params[:id])
+    @comp = Comp.find(params[:id])
   end
 
   def comp_params

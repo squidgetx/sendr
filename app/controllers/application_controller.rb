@@ -15,5 +15,19 @@ class ApplicationController < ActionController::Base
     return nil if session[:scoresheet].nil?
     Scoresheet.find(session[:scoresheet])
   end
+
+  def render_error(err, msg)
+    render json: {
+      error: err,
+      message: msg
+    }
+  end
+
+  def render_data(data)
+    render json: {
+      success: 1,
+      data: data
+    }
+  end
 end
 
