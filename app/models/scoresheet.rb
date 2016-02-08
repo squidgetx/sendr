@@ -26,4 +26,9 @@ class Scoresheet < ActiveRecord::Base
     self.save
   end
 
+  def get_climbs
+    climbs = Climb.where('scoresheet_id = ?', self.id);
+    self.comp.routes.left_join(climbs).select('routes.*, climbs.attempts AS attempts, climbs.sent AS sent, climbs.witness AS witness')
+  end
+
 end

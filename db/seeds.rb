@@ -49,3 +49,13 @@ Route.create([{
   grade: "V2",
   location: "Topout area"
 }]);
+
+Scoresheet.create({
+  comp_id: 1,
+  climber_id: 1
+})
+
+Climb.create({
+  scoresheet_id: 1,
+  route_id: 1
+})

@@ -3,8 +3,7 @@ class ScoresheetsController < ApplicationController
   before_action :find_scoresheet
 
   def index
-    @climbs = @scoresheet.climbs
-    @routes = @scoresheet.comp.routes
+    @climbs = @scoresheet.get_climbs
   end
 
   def speed
