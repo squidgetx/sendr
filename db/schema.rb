@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(version: 20160207210429) do
     t.integer  "comp_id"
     t.integer  "boulder_score"
     t.integer  "sport_score"
-    t.float    "speed1"
-    t.float    "speed2"
+    t.float    "speed"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end

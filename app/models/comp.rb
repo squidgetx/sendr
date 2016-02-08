@@ -23,4 +23,17 @@ class Comp < ActiveRecord::Base
     # Get open comps
     Comp.where("state = 'open'")
   end
+
+  def leaders
+    # Get the leaders!
+    scoresheets = self.scoresheets
+    boulders = scoresheets.order(boulder_score: :desc).limit(3)
+    sport = scoresheets.order(sport_score: :desc).limit(3)
+    speed = scoresheets.order(speed: :asc).limit(3)
+    results = {
+      boulder: boulders,
+      sport: sport,
+      speed: speed
+    }
+  end
 end

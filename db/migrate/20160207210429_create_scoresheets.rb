@@ -5,8 +5,7 @@ class CreateScoresheets < ActiveRecord::Migration
       t.integer :comp_id
       t.integer :boulder_score
       t.integer :sport_score
-      t.float :speed1
-      t.float :speed2
+      t.float :speed
       t.timestamps null: false
     end
   end
