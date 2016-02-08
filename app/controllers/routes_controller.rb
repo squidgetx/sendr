@@ -8,12 +8,20 @@ class RoutesController < ApplicationController
   end
   
   def create
+    @route = Route.new(route_params)
+    if @route.save
+    else
+    end
   end
 
   def edit
   end
   
   def update
+    @route = @route.update(route_params)
+    if @route
+    else
+    end
   end
 
   def destroy

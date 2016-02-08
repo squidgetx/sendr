@@ -16,18 +16,29 @@ class CompsController < ApplicationController
   def show
     # this is where we see who are the top 3 in
     # each category
+    @leaders = @comp.leaders
   end
 
   def new
   end
 
   def create
+    @comp = Comp.new(comp_params)
+    if @comp.save
+
+    else
+
+    end
   end
 
   def edit
   end
   
   def update
+    @comp = @comp.update(comp_params)
+    if @comp
+    else
+    end
   end
 
   def destroy

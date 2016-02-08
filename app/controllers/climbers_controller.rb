@@ -4,13 +4,22 @@ class ClimbersController < ApplicationController
   end
   
   def create
-    @climber = Climber.create(climber_params)
+    @climber = Climber.new(climber_params)
+    if @climber.save
+      # success
+    else
+      # failure!
+    end
   end
 
   def edit
   end
 
   def update
+    @climber = @climber.update(climber_params)
+    if @climber
+    else 
+    end
   end
 
   def destroy
