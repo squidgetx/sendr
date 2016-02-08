@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     member do
       put 'send'
       put 'attempt'
+      put 'witness'
     end
   end
 

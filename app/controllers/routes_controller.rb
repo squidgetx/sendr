@@ -33,6 +33,14 @@ class RoutesController < ApplicationController
     render json: @climb 
   end
 
+  def witness
+    find_climb
+    @climb.witness = params[:witness]
+    @climb.sent = true
+    @climb.save
+    render json: @climb
+  end
+
   private
 
   def find_route
