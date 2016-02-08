@@ -24,6 +24,10 @@ class Comp < ActiveRecord::Base
     Comp.where("state = 'open'")
   end
 
+  def closed
+    self.state == 'closed'
+  end
+
   def leaders
     # Get the leaders!
     scoresheets = self.scoresheets

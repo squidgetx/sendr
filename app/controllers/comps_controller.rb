@@ -7,7 +7,7 @@ class CompsController < ApplicationController
     # If climber logged in with
     # active scoresheet,
     # redirect to scoresheet home
-    if current_scoresheet.present?
+    if @current_scoresheet.present?
       redirect to: scoresheets_index_path
     end
     @comps = Comp.open
