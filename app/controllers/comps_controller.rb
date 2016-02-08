@@ -30,14 +30,17 @@ class CompsController < ApplicationController
 
   def start
     @comp.state = 'running'
+    render json: @comp
   end
   
   def open
     @comp.state = 'open'
+    render json: @comp
   end
 
   def close
     @comp.state = 'closed'
+    render json: @comp
   end
 
   def join
