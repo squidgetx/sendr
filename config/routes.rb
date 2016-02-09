@@ -29,7 +29,7 @@ Rails.application.routes.draw do
 
   get 'scoresheet' => 'scoresheets#index'
   put 'scoresheet/speed' => 'scoresheets#speed'
-  put 'scoresheet/climbs' => 'scoresheets#climbs'
+  get 'scoresheet/climbs' => 'scoresheets#climbs'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
