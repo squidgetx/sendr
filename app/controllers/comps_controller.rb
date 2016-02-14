@@ -8,7 +8,7 @@ class CompsController < ApplicationController
     # active scoresheet,
     # redirect to scoresheet home
     if @current_scoresheet.present?
-      redirect to: scoresheets_index_path
+      redirect_to scoresheet_path
     end
     @comps = Comp.open
   end
