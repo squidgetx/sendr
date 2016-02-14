@@ -27,10 +27,14 @@ class Scoresheet < ActiveRecord::Base
   end
 
   def get_climbs
-    self.comp.routes.left_join(:climbs)
-      .where("climbs.scoresheet_id = ?", self.id)
+    climbs = self.comp.routes.left_join(:climbs)
+      .where("climbs.scoresheet_id = ? OR routes.comp_id = ?", self.id, self.comp.id)
       .select("routes.*, climbs.attempts AS attempts, climbs.witness AS witness, climbs.sent AS sent")
       .order('routes.points asc')
+
+   # routes = self.comp.routes
+   # climbs = climbs.merge(routes)
+   # climbs
   end
 
 end
