@@ -11,12 +11,12 @@ class ApplicationController < ActionController::Base
 
   def current_climber
     return nil if session[:climber_id].nil?
-    @current_climber = Climber.find(session[:climber_id]);
+    @current_climber = Climber.find_by_id(session[:climber_id]);
   end
 
   def current_scoresheet
     return nil if session[:scoresheet].nil?
-    @current_scoresheet = Scoresheet.find(session[:scoresheet])
+    @current_scoresheet = Scoresheet.find_by_id(session[:scoresheet])
   end
 
   def render_error(err, msg)
@@ -36,7 +36,8 @@ class ApplicationController < ActionController::Base
   def check_scoresheet
     return if current_scoresheet.nil?
     return if current_climber.nil?
-    if @current_scoresheet.comp.closed
+
+    if @current_scoresheet.nil? || @current_scoresheet.comp.closed
       session[:scoresheet] = nil
     end
   end
