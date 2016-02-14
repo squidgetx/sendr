@@ -9,7 +9,7 @@
 .table {
     padding-left: 0;
     margin: 1px;
-    width: 100%;
+    width: 100%
 }
 
 li {
@@ -23,9 +23,25 @@ li div {
     width: 31%;
 }
 
+button div {
+    display: inline-block;
+    padding: 2px;
+    width: 30%;
+}
+
+button {
+    display: block;
+    width: 297px;
+}
+
 .tab {
     border-radius: 10px 10px 0 0;
     display: inline-block;
     margin-right: -4px;
     width: 33.3%;
+}
+
+.info {
+    width: 300px;
+    border: none;
 }
