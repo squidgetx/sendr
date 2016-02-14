@@ -17,7 +17,7 @@ class Scoresheet < ActiveRecord::Base
     self.speed_attempts = 0
   end
 
-  def speed time
+  def record_speed time
     return nil if self.speed_attempts == 2
     if (self.speed > time)
       self.speed = time
@@ -27,8 +27,7 @@ class Scoresheet < ActiveRecord::Base
   end
 
   def get_climbs
-    climbs = Climb.where('scoresheet_id = ?', self.id);
-    self.comp.routes.left_join(climbs).select('routes.*, climbs.attempts AS attempts, climbs.sent AS sent, climbs.witness AS witness')
+    self.comp.routes.left_join(:climbs).where("climbs.scoresheet_id = ?", self.id).select("routes.*, climbs.attempts AS attempts, climbs.witness AS witness, climbs.sent AS sent")
   end
 
 end

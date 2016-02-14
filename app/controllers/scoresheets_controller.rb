@@ -7,7 +7,7 @@ class ScoresheetsController < ApplicationController
   end
 
   def climbs
-    render json: @scoresheet.climbs
+    render json: @scoresheet.get_climbs
   end
 
   def speed
