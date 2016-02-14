@@ -1,15 +1,11 @@
-<p> This is the scoresheet page</p>
+<div class="sheet">
+    <button class="tab" onclick="renderClimbs(CLIMBS, 'sport')">Boulder</button>
+    <button class="tab" onclick="renderClimbs(CLIMBS, 'boulder')">Sport</button>
+    <button class="tab">Speed</button>
 
-Scoresheet: <%= @scoresheet.to_json %>
-
-<br>
-Routes: 
-
-<%= @routes.each do |route| %>
-  <%= route.to_json %>
-<% end %>
-<br>
-
-
+    <ul class="table" id="table">
+        <li><div><b>Points:</div><div>Color:</div><div>Attempts:</b></div></li>
+    </ul>
+</div>
 
 

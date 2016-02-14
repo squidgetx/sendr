@@ -6,7 +6,7 @@ class RoutesController < ApplicationController
 
   def new
   end
-  
+
   def create
     @route = Route.new(route_params)
     if @route.save
@@ -16,7 +16,7 @@ class RoutesController < ApplicationController
 
   def edit
   end
-  
+
   def update
     @route = @route.update(route_params)
     if @route
@@ -38,7 +38,7 @@ class RoutesController < ApplicationController
     find_climb
     @climb.sent = true
     @climb.save
-    render json: @climb 
+    render json: @climb
   end
 
   def witness

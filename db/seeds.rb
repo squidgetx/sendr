@@ -31,7 +31,8 @@ Comp.create([{
   date: Date.tomorrow,
 }]);
 
-Route.create([{
+Route.create([
+{
   comp_id: 1,
   name: "Predator",
   color: "orange",
@@ -40,7 +41,37 @@ Route.create([{
   discipline: "sport",
   grade: "5.13b",
   location: "orange crush"
-}, {
+},
+{
+  comp_id: 1,
+  name: "Amarillo Sunset",
+  color: "yellow",
+  points: 1100,
+  notes: "must do all moves static",
+  discipline: "sport",
+  grade: "5.11a",
+  location: "PMRP"
+},
+{
+  comp_id: 1,
+  name: "Pure Imagination",
+  color: "red",
+  points: 1550,
+  notes: "Sasha DiGiulian",
+  discipline: "sport",
+  grade: "5.14d",
+  location: "The Motherlode"
+},
+{
+  comp_id: 1,
+  name: "Iron Cross",
+  color: "grey",
+  points: 1350,
+  discipline: "boulder",
+  grade: "V4",
+  location: "Lincoln Woods"
+},
+{
   comp_id: 1,
   name: "Black Jack Crack",
   color: "black",
@@ -48,14 +79,15 @@ Route.create([{
   discipline: "boulder",
   grade: "V2",
   location: "Topout area"
-}]);
+},
+]);
 
 Scoresheet.create({
   comp_id: 1,
   climber_id: 1
 })
 
-Climb.create({
+Climb.create([{
   scoresheet_id: 1,
   route_id: 1
-})
+}])

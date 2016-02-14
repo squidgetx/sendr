@@ -1,3 +1,31 @@
 // Place all the styles related to the scoresheet controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.sheet {
+    width: 300px;
+}
+
+.table {
+    padding-left: 0;
+    margin: 1px;
+    width: 100%;
+}
+
+li {
+    list-style-type: none;
+}
+
+li div {
+    border: 1px solid black;
+    display: inline-block;
+    padding: 2px;
+    width: 31%;
+}
+
+.tab {
+    border-radius: 10px 10px 0 0;
+    display: inline-block;
+    margin-right: -4px;
+    width: 33.3%;
+}
