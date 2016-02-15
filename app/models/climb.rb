@@ -13,9 +13,9 @@ class Climb < ActiveRecord::Base
 
 
   def init
-    self.attempts = 0
-    self.sent = false
-    self.witness = ""
+    self.attempts ||= 0
+    self.sent ||= false
+    self.witness ||= ""
   end
 
 
