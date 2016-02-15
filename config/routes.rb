@@ -12,16 +12,16 @@ Rails.application.routes.draw do
   end
 
   resources :climbers do
-    collection do 
+    collection do
       put 'login'
     end
   end
 
   resources :routes do
     member do
-      put 'send'
-      put 'attempt'
-      put 'witness'
+      put 'sendClimb'
+      put 'attemptClimb'
+      put 'witnessClimb'
     end
   end
 

@@ -5,7 +5,7 @@ $(document).ready(getClimbsFromServer());
 function getClimbsFromServer() {
     $.ajax({
         url: "/scoresheet/climbs",
-    method: "get"
+        method: "get"
     }).done(function(climbs) {
         CLIMBS = climbs;
         renderClimbs(climbs, "boulder");
@@ -48,6 +48,10 @@ function renderClimbs(climbs, discipline) {
         }
         attempts.appendChild(document.createTextNode(attemptTallies));
 
+        if (climb.sent) {
+            li.style.border = "5px solid green";
+        }
+
         li.appendChild(points);
         li.appendChild(color);
         li.appendChild(attempts);
@@ -83,7 +87,7 @@ function clearClimbs() {
             climb.remove();
         }
     }
-    for (var i = 0; i < 8; i++) {
+    for (var i = 0; i < 9 + 3; i++) {
         var note = document.getElementById("" + i);
         if (note) {
             note.remove();
@@ -101,8 +105,8 @@ function renderClimbInfo(climbs, index) {
         var climb = climbs[index];
 
         var properties = ["name", "points", "color", "discipline", "grade", "locations",
-            "notes", "attempts"]; // NOTE THAT THE CLEARCLIMBS IS HARDCODED TO 8
-        for (var i = 0; i < properties.length; i++) {
+            "notes", "attempts", "sent"]; // NOTE THAT THE CLEARCLIMBS IS HARDCODED TO 9
+        for (i = 0; i < properties.length; i++) {
             if (climb[properties[i]]) {
                 var li = document.createElement("li");
                 li.id = i;
@@ -117,5 +121,45 @@ function renderClimbInfo(climbs, index) {
                 table.appendChild(li);
             }
         }
+
+        var attempt = document.createElement("button");
+        attempt.className = "registerButton";
+        attempt.id = i; i++;
+        attempt.appendChild(document.createTextNode("Register Attempt"));
+        attempt.onclick = registerAttempt(climbs, index, climb.id);
+        table.appendChild(attempt);
+
+        var send = document.createElement("button");
+        send.className = "registerButton";
+        send.id = i; i++;
+        send.appendChild(document.createTextNode("Register Send"));
+        send.onclick = registerSend(climbs, index, climb.id);
+        table.appendChild(send);
+    };
+}
+
+function registerAttempt(climbs, index, climbId) {
+    return function () {
+        $.ajax({
+            url: "/routes/" + climbId + "/attemptClimb",
+            method: "put"
+        }).done(function(climb) {
+            CLIMBS[index].attempts = climb.attempts;
+            renderClimbInfo(CLIMBS, index)();
+        });
+    };
+}
+
+function registerSend(climbs, index, climbId) {
+    return function () {
+        $.ajax({
+            url: "/routes/" + climbId + "/sendClimb",
+            method: "put"
+        }).done(function(climb) {
+            console.log(climb);
+            CLIMBS[index].sent = "Yes!";
+            CLIMBS[index].attempts = climb.attempts;
+            renderClimbInfo(CLIMBS, index)();
+        });
     };
 }

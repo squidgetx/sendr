@@ -27,21 +27,21 @@ class RoutesController < ApplicationController
   def destroy
   end
 
-  def attempt
+  def attemptClimb
     find_climb
     @climb.attempts += 1
     @climb.save
     render json: @climb
   end
 
-  def send
+  def sendClimb
     find_climb
     @climb.sent = true
     @climb.save
     render json: @climb
   end
 
-  def witness
+  def witnessClimb
     find_climb
     @climb.witness = params[:witness]
     @climb.sent = true
