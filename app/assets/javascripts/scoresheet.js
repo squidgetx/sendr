@@ -12,6 +12,22 @@ function getClimbsFromServer() {
     });
 }
 
+function focusTab(discipline) {
+    var boulder = document.getElementById("boulderTab");
+    var sport = document.getElementById("sportTab");
+    var speed = document.getElementById("speedTab");
+    var tabs = {boulder: boulder, sport: sport, speed: speed};
+    for (var disc in tabs) {
+        var tab = tabs[disc];
+        tab.style.width = "25%";
+        tab.style.fontWeight = "normal";
+        if (disc == discipline) {
+            tab.style.width = "50%";
+            tab.style.fontWeight = "bold";
+        }
+    }
+}
+
 function renderClimbs(climbs, discipline) {
     clearClimbs();
     focusTab(discipline);
@@ -59,39 +75,33 @@ function renderClimbs(climbs, discipline) {
     }
 }
 
-function focusTab(discipline) {
-    var boulder = document.getElementById("boulderTab");
-    var sport = document.getElementById("sportTab");
-    var speed = document.getElementById("speedTab");
-    var tabs = {boulder: boulder, sport: sport, speed: speed};
-    for (var disc in tabs) {
-        var tab = tabs[disc];
-        tab.style.width = "25%";
-        tab.style.fontWeight = "normal";
-        if (disc == discipline) {
-            tab.style.width = "50%";
-            tab.style.fontWeight = "bold";
-        }
-    }
-}
-
 function renderSpeed() {
+    var table = document.getElementById("table");
     var columns = document.getElementById("cols");
     columns.style.visibility = "hidden";
-}
 
-function clearClimbs() {
-    for (var i = 0; i < CLIMBS.length; i++) {
-        var climb = document.getElementById("" + i);
-        if (climb) {
-            climb.remove();
-        }
-    }
-    for (var i = 0; i < 9 + 3; i++) {
-        var note = document.getElementById("" + i);
-        if (note) {
-            note.remove();
-        }
+    for (var i = 0; i < 2; i++) {
+        var speed = document.createElement("div");
+        speed.className = "speedBox";
+        speed.id = "speed_" + i;
+        var title = document.createElement("b");
+        title.appendChild(document.createTextNode("Attempt #" + (i+1)));
+        speed.appendChild(title);
+        speed.appendChild(document.createElement("br"));
+        speed.appendChild(document.createTextNode("Time: "));
+        var time = document.createElement("input");
+        time.type = "number";
+        time.id = "time_" + i;
+        speed.appendChild(time);
+        speed.appendChild(document.createTextNode(" seconds"));
+
+        var submitButton = document.createElement("button");
+        submitButton.appendChild(document.createTextNode("Submit Time"));
+        submitButton.className = "submitButton";
+        submitButton.onclick = registerSpeed();
+        speed.appendChild(submitButton);
+
+        table.appendChild(speed);
     }
 }
 
@@ -156,10 +166,42 @@ function registerSend(climbs, index, climbId) {
             url: "/routes/" + climbId + "/sendClimb",
             method: "put"
         }).done(function(climb) {
-            console.log(climb);
             CLIMBS[index].sent = "Yes!";
             CLIMBS[index].attempts = climb.attempts;
             renderClimbInfo(CLIMBS, index)();
         });
     };
+}
+
+function registerSpeed() {
+    return function () {
+        var time = document.getElementById("sp
+        $.ajax({
+            url: "/scoresheet/speed",
+            method: "put"
+        }).done(function(climb) {
+
+        });
+    };
+}
+
+function clearClimbs() {
+    for (var i = 0; i < CLIMBS.length; i++) {
+        var climb = document.getElementById("" + i);
+        if (climb) {
+            climb.remove();
+        }
+    }
+    for (var i = 0; i < 9 + 3; i++) {
+        var note = document.getElementById("" + i);
+        if (note) {
+            note.remove();
+        }
+    }
+    for (var i = 0; i < 2; i++) {
+        var speed = document.getElementById("speed_" + i);
+        if (speed) {
+            speed.remove();
+        }
+    }
 }
