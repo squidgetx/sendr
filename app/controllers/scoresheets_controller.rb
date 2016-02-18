@@ -11,7 +11,7 @@ class ScoresheetsController < ApplicationController
   end
 
   def speed
-    @scoresheet.speed(params[:time])
+    @scoresheet.record_speed(params[:time])
   end
 
   def find_scoresheet

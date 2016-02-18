@@ -98,7 +98,7 @@ function renderSpeed() {
         var submitButton = document.createElement("button");
         submitButton.appendChild(document.createTextNode("Submit Time"));
         submitButton.className = "submitButton";
-        submitButton.onclick = registerSpeed();
+        submitButton.onclick = registerSpeed(time.id);
         speed.appendChild(submitButton);
 
         table.appendChild(speed);
@@ -148,6 +148,8 @@ function renderClimbInfo(climbs, index) {
     };
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+// Register new climbs with the server
 function registerAttempt(climbs, index, climbId) {
     return function () {
         $.ajax({
@@ -173,17 +175,19 @@ function registerSend(climbs, index, climbId) {
     };
 }
 
-function registerSpeed() {
+function registerSpeed(timeId) {
     return function () {
-        var time = document.getElementById("sp
+        var time = document.getElementById(timeId).value;
         $.ajax({
             url: "/scoresheet/speed",
-            method: "put"
+            method: "put",
+            data: {time: time}
         }).done(function(climb) {
-
+            console.log(climb);
         });
     };
 }
+/////////////////////////////////////////////////////////////////////////////////
 
 function clearClimbs() {
     for (var i = 0; i < CLIMBS.length; i++) {
