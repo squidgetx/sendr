@@ -12,9 +12,9 @@ class Scoresheet < ActiveRecord::Base
   validates :sport_score, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
   def init
-    self.boulder_score = 0
-    self.sport_score = 0
-    self.speed_attempts = 0
+    self.boulder_score ||= 0
+    self.sport_score ||= 0
+    self.speed_attempts ||= 0
   end
 
   def record_speed time

@@ -62,10 +62,12 @@ class CompsController < ApplicationController
   def join
     if current_climber.nil?
       render_error(500, "Climber not logged in")
+      return
     end
 
     if (@comp.state == 'closed')
       render_error(500, "Comp not open")
+      return
     end
 
     scoresheet = @comp.join(current_climber.id)

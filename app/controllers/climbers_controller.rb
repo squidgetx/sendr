@@ -26,17 +26,20 @@ class ClimbersController < ApplicationController
   end
   
   def login
-    ccs = params[:ccs_id].to_i
+    ccs = params[:ccs_id]
     if ccs.nil?
       render_error(500, "ccs id not found in query")
       return
     end
+
+    ccs = ccs.to_i
 
     c = Climber.where("ccs_id = ?", ccs).first
     if c.nil?
       render_error(500, "CCS id #{ccs} not found");
       return
     end
+
     session[:climber_id] = c.id
     render_data("logged in as #{c.name}");
   end
