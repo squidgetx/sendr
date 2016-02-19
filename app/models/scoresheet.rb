@@ -20,6 +20,9 @@ class Scoresheet < ActiveRecord::Base
   def record_speed time
     return nil if self.speed_attempts == 2
     time = time.to_f
+    if time == 0
+      return false
+    end
     if (self.speed.nil? || self.speed > time)
       self.speed = time
     end

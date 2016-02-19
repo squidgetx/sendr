@@ -11,7 +11,12 @@ class ScoresheetsController < ApplicationController
   end
 
   def speed
-    @scoresheet.record_speed(params[:time])
+    saved = @scoresheet.record_speed(params[:time])
+    if saved
+      render json: @scoresheet
+    else
+      render_error(500, "speed save failed")
+    end
   end
 
   def find_scoresheet
