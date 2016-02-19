@@ -16,9 +16,19 @@
 
   <%= text_field_tag(:comp_id, @comp, {type: "hidden"}) %>
 
+
   <%= f.label "Name" %>
     <%= f.text_field :name %>
+
+  <%= f.select(:gender, [['Female', :female], ['Male', :male]]) %>
+  
+  <%= f.select(:college_id) do %>
+    <% College.all.each do |c| %> 
+      <%= content_tag(:option, c.name,  value: c.id) %>
+    <% end %>
+  <% end %>
     <%= f.submit "Done"%>
+
   <% end %>
 
 

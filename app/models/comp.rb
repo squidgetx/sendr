@@ -25,14 +25,19 @@ class Comp < ActiveRecord::Base
 
   def leaders
     # Get the leaders!
-    scoresheets = self.scoresheets.joins(climber: :college).select("scoresheets.*, climbers.*, colleges.name AS college_name")
-    boulders = scoresheets.order(boulder_score: :desc).limit(3)
-    sport = scoresheets.order(sport_score: :desc).limit(3)
-    speed = scoresheets.order(speed: :asc).limit(3)
+    males = self.scoresheets.joins(climber: :college).where(climbers: {gender: 0}).select("scoresheets.*, climbers.*, colleges.name AS college_name")
+    females = self.scoresheets.joins(climber: :college).where(climbers: {gender: 1}).select("scoresheets.*, climbers.*, colleges.name AS college_name")
     results = {
-      boulder: boulders,
-      sport: sport,
-      speed: speed
+      males: {
+        boulder: males.boulder_leaders,
+        sport: males.sport_leaders,
+        speed: males.speed_leaders
+      },
+      females: {
+        boulder: females.boulder_leaders,
+        sport: females.sport_leaders,
+        speed: females.speed_leaders
+      }
     }
     results
   end

@@ -13,6 +13,11 @@ class Scoresheet < ActiveRecord::Base
 
   BOULDERCOUNT = 5
   SPORTCOUNT = 3
+  LEADERCOUNT = 3
+
+  scope :boulder_leaders, -> { order(boulder_score: :desc).limit(LEADERCOUNT) }
+  scope :sport_leaders, -> { order(sport_score: :desc).limit(LEADERCOUNT) }
+  scope :speed_leaders, -> { order(speed: :asc).limit(LEADERCOUNT) }
 
   def init
     self.boulder_score ||= 0

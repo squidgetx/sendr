@@ -89,7 +89,7 @@ class ClimbersController < ApplicationController
   end
 
   def climber_params
-    params.require(:climber).permit(:id, :ccs_id, :college_id, :name)
+    params.require(:climber).permit(:id, :ccs_id, :college_id, :name, :gender)
   end
 
 end

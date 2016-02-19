@@ -14,16 +14,31 @@ College.create([{
 Climber.create([{
   name: "Ben Eskildsen",
   ccs_id: 1,
-  college_id: 1
+  college_id: 1,
+  gender: :male
 }, {
   name: "Sylvan Zheng",
   ccs_id: 2,
-  college_id: 1
+  college_id: 1,
+  gender: :male
 }, {
   name: "RIT guy",
   ccs_id: 3,
-  college_id: 2
-}])
+  college_id: 2,
+  gender: :male
+}, {
+  name: "Libby Henry",
+  ccs_id: 4,
+  college_id: 1,
+  gender: :female
+}, {
+  name: "Grace Stonecipher",
+  ccs_id: 5,
+  college_id: 1,
+  gender: :female
+}
+
+])
 
 Comp.create([{
   state: :open,
