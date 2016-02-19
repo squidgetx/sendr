@@ -1,9 +1,9 @@
-$(document).ready(getProfileInfoFromServer());
+$(document).ready(getProfileInfoFromServer);
 
 function getProfileInfoFromServer() {
     $.ajax({
 
     }).done(function(profile) {
-        console.log(profile);
+        // console.log(profile);
     });
 }

@@ -1,6 +1,6 @@
 var CLIMBS = [];
 
-$(document).ready(getClimbsFromServer());
+$(document).ready(getClimbsFromServer);
 
 function getClimbsFromServer() {
     $.ajax({
@@ -38,6 +38,9 @@ function renderClimbs(climbs, discipline) {
     focusTab(discipline);
     if (discipline == "speed") {
         renderSpeed();
+        return;
+    }
+    if (!document.getElementById("cols")) {
         return;
     }
     var table = document.getElementById("table");
