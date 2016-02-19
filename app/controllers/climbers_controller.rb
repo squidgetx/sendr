@@ -1,5 +1,7 @@
 class ClimbersController < ApplicationController
 
+  before_action :find_climber
+
   def new
   end
   
@@ -10,6 +12,10 @@ class ClimbersController < ApplicationController
     else
       # failure!
     end
+  end
+
+  def show
+
   end
 
   def edit
@@ -45,6 +51,10 @@ class ClimbersController < ApplicationController
   end
 
   private
+
+  def find_climber
+    @climber = Climber.find(params[:id])
+  end
 
   def climber_params
     params.require(:climber).permit(:id, :ccs_id, :college_id, :name)

@@ -21,7 +21,6 @@ class Scoresheet < ActiveRecord::Base
     if time == 0
       return false
     end
-
     if self.speed_attempt1.nil?
       self.speed_attempt1 = time
       self.speed = time
@@ -36,11 +35,9 @@ class Scoresheet < ActiveRecord::Base
     self.save
   end
 
-
   def get_climbs
     climbs = Route.joins("LEFT JOIN climbs on routes.id = climbs.route_id AND climbs.scoresheet_id = #{self.id} AND routes.comp_id = #{self.comp.id}").select("routes.*, climbs.attempts AS attempts, climbs.sent AS sent, climbs.witness AS witness")
       .order('routes.points asc')
-
   end
 
 end
