@@ -28,6 +28,8 @@ function focusTab(discipline) {
     }
 }
 
+/////////////////////////////////////////////////////////////////////////////////
+// Render different parts of the view
 function renderClimbs(climbs, discipline) {
     clearClimbs();
     focusTab(discipline);
@@ -147,6 +149,7 @@ function renderClimbInfo(climbs, index) {
         table.appendChild(send);
     };
 }
+/////////////////////////////////////////////////////////////////////////////////
 
 /////////////////////////////////////////////////////////////////////////////////
 // Register new climbs with the server
@@ -183,7 +186,10 @@ function registerSpeed(timeId) {
             method: "put",
             data: {time: time}
         }).done(function(climb) {
-            console.log(climb);
+            if (!climb.error) {
+                document.getElementById(timeId).setAttribute('readonly', true);
+                document.getElementById(timeId).style.backgroundColor = "gray";
+            }
         });
     };
 }
