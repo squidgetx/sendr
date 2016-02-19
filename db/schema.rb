@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 20160219025220) do
     t.datetime "updated_at",     null: false
     t.float    "speed_attempt1"
     t.float    "speed_attempt2"
+    t.float    "speed"
   end
 
 end
