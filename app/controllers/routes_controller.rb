@@ -38,6 +38,7 @@ class RoutesController < ApplicationController
     find_climb
     @climb.sent = true
     @climb.save
+    @current_scoresheet.update_scores
     render json: @climb
   end
 

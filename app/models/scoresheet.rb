@@ -11,6 +11,9 @@ class Scoresheet < ActiveRecord::Base
   validates :boulder_score, numericality: {only_integer: true, greater_than_or_equal_to: 0}
   validates :sport_score, numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
+  BOULDERCOUNT = 5
+  SPORTCOUNT = 3
+
   def init
     self.boulder_score ||= 0
     self.sport_score ||= 0
@@ -38,6 +41,13 @@ class Scoresheet < ActiveRecord::Base
   def get_climbs
     climbs = Route.joins("LEFT JOIN climbs on routes.id = climbs.route_id AND climbs.scoresheet_id = #{self.id} AND routes.comp_id = #{self.comp.id}").select("routes.*, climbs.attempts AS attempts, climbs.sent AS sent, climbs.witness AS witness")
       .order('routes.points asc')
+  end
+
+  def update_scores
+    sport = self.climbs.includes(:route).where(routes: {discipline: "sport"}, climbs: {sent: true}).order("routes.points desc").limit(SPORTCOUNT).select("routes.points").sum
+    boulder = self.climbs.includes(:route).where(routes: {discipline: "boulder"}, climbs: {sent: true}).order("routes.points desc").limit(BOULDERCOUNT).select("routes.points").sum
+    self.sport_score = sport
+    self.boulder_score = boulder
   end
 
 end
