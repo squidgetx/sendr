@@ -30,7 +30,7 @@ class Comp < ActiveRecord::Base
 
   def leaders
     # Get the leaders!
-    scoresheets = self.scoresheets
+    scoresheets = self.scoresheets.eager_load(:climber)
     boulders = scoresheets.order(boulder_score: :desc).limit(3)
     sport = scoresheets.order(sport_score: :desc).limit(3)
     speed = scoresheets.order(speed: :asc).limit(3)
