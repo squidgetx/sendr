@@ -14,6 +14,6 @@ enter ur ccs number:
 <%= @comps.each do |comp| %>
   <li><%= comp.location %></li>
   <li><%= comp.date %></li>
-  <li><a href='/comps/<%= comp.id %>/join' data-method='PUT'>Join</a></li>
+  <li><%= join_comp_path(comp) %>Join</a></li>
 <% end %>
 </ul>

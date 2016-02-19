@@ -15,6 +15,8 @@ $(document).ready(function() {
         $('#sign-in').addClass("hidden");
         $('#climber_ccs_id').val(data.data);
       }
+    } else {
+      window.location.href = data.data;
     }
   }).on('ajax:error', function(e, xhr, status, error) {
   });

@@ -10,14 +10,18 @@
 
 <div id='navbar'>
   <ul class='navList'>
-    <li class='nav'>
       <% if @current_climber.nil? %>
-        <%= link_to 'Sign In', signin_climbers_path %>
-      <% else %>
+      <li class='nav'>
+         <%= link_to 'Sign In', signin_climbers_path %>
+      </li>
+    <% else %>
+      <li class='nav'>
         <%= link_to 'Profile', @current_climber %>
+      </li>
+      <li class='nav'>
         <%= link_to 'Log Out', logout_climbers_path, method: 'put' %>
-      <% end %>
-    </li>
+      </li>
+    <% end %>
     <% if @current_scoresheet.present? %>
     <li class='nav'>
       <%= link_to 'Scoresheet', scoresheet_path %>

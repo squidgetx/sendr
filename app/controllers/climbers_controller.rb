@@ -10,8 +10,8 @@ class ClimbersController < ApplicationController
     if @climber.save
       # success
       login_climber climber_params[:ccs_id]
-      if params[:comp].present?
-        redirect_to join_comp_path(params[:comp])
+      if params[:comp_id].present?
+        redirect_to join_comp_path(params[:comp_id]), method: :put
       else
         redirect_to climber_path(@climber)
       end
@@ -48,7 +48,12 @@ class ClimbersController < ApplicationController
     ccs = ccs.to_i
     c = login_climber ccs
     return if c.nil?
-    render_data("logged in as #{c.name}");
+    if params[:comp_id]
+      #render action: :join, controller: :comp
+      render_data(join_comp_path(params[:comp_id]))
+      return
+    end
+    render_data(climber_path(c))
   end
 
   def signin
