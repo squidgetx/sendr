@@ -19,6 +19,9 @@ function focusTab(discipline) {
     var tabs = {boulder: boulder, sport: sport, speed: speed};
     for (var disc in tabs) {
         var tab = tabs[disc];
+        if (!tab) {
+            continue;
+        }
         tab.style.width = "25%";
         tab.style.fontWeight = "normal";
         if (disc == discipline) {
