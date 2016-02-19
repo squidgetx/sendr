@@ -33,10 +33,12 @@ button div {
     box-sizing: border-box;
 }
 
-button {
+button.score {
     box-sizing: border-box;
     display: block;
-    width: $width - 3%;
+    width: $width - 1%;
+    font-size: 18px;
+    padding: 8px;
 }
 
 .tab {
@@ -44,6 +46,9 @@ button {
     display: inline-block;
     margin-right: -4px;
     width: 33.3%;
+    font-size: 18px;
+    padding: 5px;
+    box-sizing: border-box;
 }
 
 .tab.active {
@@ -63,10 +68,27 @@ button {
 }
 
 .registerButton {
-  display: block;
-  margin: 5px auto 5px auto ;
-  padding: 5px;
-  width: 150px;
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  padding: 24px;
+  width: 50%;
+  font-size: 30px;
+  margin: 0;
+  color: white;
+  border: none;
+  text-align: center;
+}
+
+.registerButton.send {
+  background-color: green;
+  right: 0;
+}
+
+.registerButton.attempt {
+  background-color: #444;
+  left: 0;
+
 }
 
 .speedBox {

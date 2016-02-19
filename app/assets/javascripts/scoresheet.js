@@ -50,7 +50,9 @@ function renderClimbs(climbs, discipline) {
             continue;
         }
         var li = document.createElement("li");
-        li = li.appendChild(document.createElement("button"));
+        var btn = document.createElement("button");
+        btn.className = "score";
+        li = li.appendChild(btn);
         li.onclick = renderClimbInfo(climbs, i);
         li.id = i;
         var points = document.createElement("div");
@@ -131,7 +133,7 @@ function renderClimbInfo(climbs, index) {
                 li.id = i;
                 var div = document.createElement("div");
                 li.className = "info";
-                div.className = "info";
+                div.className = "info" + " " + properties[i];
                 div.appendChild(document.createTextNode(
                     "" + properties[i].charAt(0).toUpperCase() + properties[i].slice(1)
                     + ": " + climb[properties[i]]
@@ -142,16 +144,16 @@ function renderClimbInfo(climbs, index) {
         }
 
         var attempt = document.createElement("button");
-        attempt.className = "registerButton";
+        attempt.className = "registerButton attempt";
         attempt.id = i; i++;
-        attempt.appendChild(document.createTextNode("Register Attempt"));
+        attempt.appendChild(document.createTextNode("Attempt"));
         attempt.onclick = registerAttempt(climbs, index, climb.id);
         table.appendChild(attempt);
 
         var send = document.createElement("button");
-        send.className = "registerButton";
+        send.className = "registerButton send";
         send.id = i; i++;
-        send.appendChild(document.createTextNode("Register Send"));
+        send.appendChild(document.createTextNode("Send"));
         send.onclick = registerSend(climbs, index, climb.id);
         table.appendChild(send);
     };
