@@ -16,7 +16,10 @@ class CompsController < ApplicationController
   def show
     # this is where we see who are the top 3 in
     # each category
-    @leaders = @comp.leaders
+  end
+
+  def leaders
+    render json: @comp.leaders
   end
 
   def new

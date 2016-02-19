@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :comps do
     member do
       put 'join'
+      get 'leaders'
     end
   end
 
