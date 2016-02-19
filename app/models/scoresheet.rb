@@ -24,7 +24,7 @@ class Scoresheet < ActiveRecord::Base
 
     if self.speed_attempt1.nil?
       self.speed_attempt1 = time
-    else if self.speed_attempt2.nil?
+    elsif self.speed_attempt2.nil?
       self.speed_attempt2 = time
     else
       return false
