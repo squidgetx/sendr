@@ -9,12 +9,17 @@ $width: 100%;
   width: $width;
 }
 
+#content {
+  text-align: center;
+}
+
 ul {
   padding: 0;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
 
 body {

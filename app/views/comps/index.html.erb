@@ -1,7 +1,14 @@
+<h2>
+  JOIN A COMP
+</h2>
+
 <ul>
 <% @comps.each do |c| %>
-  <li><%= c.location %></li>
-  <li><%= c.date %></li>
-  <li><%= link_to "Join", join_comp_path(c) %></li>
+  <a href = "<%= join_comp_path(c) %>" class='comp-join'>
+    <div class='comp-card'>
+      <li><%= c.location.upcase %></li>
+      <li><%= c.date %></li>
+    </div>
+  </a>
 <% end %>
 </ul>

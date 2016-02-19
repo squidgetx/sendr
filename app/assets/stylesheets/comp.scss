@@ -1,3 +1,22 @@
 // Place all the styles related to the comp controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comp-card {
+
+}
+
+.comp-join {
+  border: 3px solid black;
+  display: block;
+  width: 256px;
+  margin: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.comp-join:hover, .comp-join:focus {
+  background-color: #111;
+  color: #eee;
+}
+  
