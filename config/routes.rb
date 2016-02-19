@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :climbers do
     collection do
       put 'login'
+      get 'signin'
     end
   end
 

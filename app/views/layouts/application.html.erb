@@ -8,6 +8,26 @@
 </head>
 <body>
 
+<div id='navbar'>
+  <ul>
+    <li class='nav'>
+      <% if @current_climber.nil? %>
+        <%= link_to 'Sign In', signin_climbers_path %>
+      <% else %>
+        <%= link_to 'Profile', @current_climber %>
+      <% end %>
+    </li>
+    <% if @current_scoresheet.present? %>
+    <li class='nav'>
+      <%= link_to 'Scoresheet', scoresheet_path %>
+    </li>
+    <li class='nav'>
+      <%= link_to 'Leaderboard', @current_scoresheet.comp %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+
 <%= yield %>
 
 </body>
