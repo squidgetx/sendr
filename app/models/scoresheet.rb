@@ -44,10 +44,11 @@ class Scoresheet < ActiveRecord::Base
   end
 
   def update_scores
-    sport = self.climbs.includes(:route).where(routes: {discipline: "sport"}, climbs: {sent: true}).order("routes.points desc").limit(SPORTCOUNT).select("routes.points").sum
-    boulder = self.climbs.includes(:route).where(routes: {discipline: "boulder"}, climbs: {sent: true}).order("routes.points desc").limit(BOULDERCOUNT).select("routes.points").sum
+    sport = self.climbs.includes(:route).where(routes: {discipline: "sport"}, climbs: {sent: true}).order("routes.points desc").limit(SPORTCOUNT).collect{|o| o.route.points}.sum
+    boulder = self.climbs.includes(:route).where(routes: {discipline: "boulder"}, climbs: {sent: true}).order("routes.points desc").limit(BOULDERCOUNT).collect{|o| o.route.points}.sum
     self.sport_score = sport
     self.boulder_score = boulder
+    self.save
   end
 
 end

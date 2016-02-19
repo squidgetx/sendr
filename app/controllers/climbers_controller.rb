@@ -33,8 +33,8 @@ class ClimbersController < ApplicationController
   
   def login
     ccs = params[:ccs_id]
-    if ccs.nil?
-      render_error(500, "ccs id not found in query")
+    if ccs.nil? || ccs.empty? || ccs.to_i == 0
+      render_error(500, "form_error")
       return
     end
 
@@ -42,7 +42,7 @@ class ClimbersController < ApplicationController
 
     c = Climber.where("ccs_id = ?", ccs).first
     if c.nil?
-      render_error(500, "CCS id #{ccs} not found");
+      render_error(502, "id_not_found");
       return
     end
 

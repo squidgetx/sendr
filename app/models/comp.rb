@@ -11,6 +11,8 @@ class Comp < ActiveRecord::Base
     # Currently logged in climber
     # joins comp and creates new scoresheet
     return nil if climber_id.nil?
+    sc = Scoresheet.where({climber_id: climber_id, comp_id: self.id}).first
+    return sc if sc.present?
     return Scoresheet.create({
       comp_id: self.id,
       climber_id: climber_id,

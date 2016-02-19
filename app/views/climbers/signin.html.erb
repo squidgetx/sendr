@@ -1,0 +1,12 @@
+<h1> Sign In </h1>
+
+<%= form_tag("/climbers/login", method: "put", remote: true, id: 'ccs_login') do %>
+  <%= text_field_tag(:ccs_id) %>
+  <%= submit_tag("enter") %>
+<% end %>
+
+<div id="new_climber" class: "hidden" >
+  <h1> Register new climber</h1>
+  <%= form_tag(create_climber_path
+
+</div>
