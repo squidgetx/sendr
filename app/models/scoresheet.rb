@@ -14,21 +14,37 @@ class Scoresheet < ActiveRecord::Base
   def init
     self.boulder_score ||= 0
     self.sport_score ||= 0
-    self.speed_attempts ||= 0
   end
 
   def record_speed time
-    return nil if self.speed_attempts == 2
     time = time.to_f
     if time == 0
       return false
     end
-    if (self.speed.nil? || self.speed > time)
-      self.speed = time
+
+    if self.speed_attempt1.nil?
+      self.speed_attempt1 = time
+    else if self.speed_attempt2.nil?
+      self.speed_attempt2 = time
+    else
+      return false
     end
-    self.speed_attempts += 1
     self.save
   end
+
+  def best_speed
+    if self.speed_attempt1.nil?
+      return nil
+    end
+
+    if self.speed_attempt2.nil?
+      return self.speed_attempt1
+    end
+    
+    return [self.speed_attempt1, self.speed_attempt2].min
+
+  end
+
 
   def get_climbs
     climbs = self.comp.routes.left_join(:climbs)
