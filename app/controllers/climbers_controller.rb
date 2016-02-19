@@ -1,6 +1,6 @@
 class ClimbersController < ApplicationController
 
-  before_action :find_climber, except: [:signin, :login]
+  before_action :find_climber, except: [:signin, :login, :create, :logout]
 
   def new
   end
@@ -9,8 +9,15 @@ class ClimbersController < ApplicationController
     @climber = Climber.new(climber_params)
     if @climber.save
       # success
+      login_climber climber_params[:ccs_id]
+      if params[:comp].present?
+        redirect_to join_comp_path(params[:comp])
+      else
+        redirect_to climber_path(@climber)
+      end
     else
       # failure!
+      render_error(500, "error")
     end
   end
 
@@ -39,18 +46,38 @@ class ClimbersController < ApplicationController
     end
 
     ccs = ccs.to_i
-
-    c = Climber.where("ccs_id = ?", ccs).first
-    if c.nil?
-      render_error(502, "id_not_found");
-      return
-    end
-
-    session[:climber_id] = c.id
+    c = login_climber ccs
+    return if c.nil?
     render_data("logged in as #{c.name}");
   end
 
+  def signin
+    @climber = Climber.new
+    if params[:comp].present?
+      @comp = params[:comp]
+    end
+  end
+
+  def logout
+    session[:climber_id] = nil
+    redirect_to root_path
+  end
+
   private
+
+  def login_climber ccs
+    c = Climber.where("ccs_id = ?", ccs).first
+    if c.nil?
+      render json: {"error": 502,
+                    "message": "id_not_found",
+                    "data": ccs
+      }
+      return nil
+    end
+    session[:climber_id] = c.id
+    return c
+  end
+
 
   def find_climber
     @climber = Climber.find(params[:id])

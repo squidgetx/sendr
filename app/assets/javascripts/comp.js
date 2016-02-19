@@ -11,7 +11,9 @@ $(document).ready(function() {
         form_error($('#ccs_login'),"Please enter a valid CCS number");
       } else {
         // redirect to new user page
-        $('#new_climber'.removeClass("hidden"));
+        $('#new_climber').removeClass("hidden");
+        $('#sign-in').addClass("hidden");
+        $('#climber_ccs_id').val(data.data);
       }
     }
   }).on('ajax:error', function(e, xhr, status, error) {

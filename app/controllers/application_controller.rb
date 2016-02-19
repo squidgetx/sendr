@@ -34,8 +34,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_scoresheet
-    return if current_scoresheet.nil?
     return if current_climber.nil?
+    return if current_scoresheet.nil?
 
     if @current_scoresheet.nil? || @current_scoresheet.comp.closed
       session[:scoresheet] = nil

@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     collection do
       put 'login'
       get 'signin'
+      put 'logout'
     end
   end
 

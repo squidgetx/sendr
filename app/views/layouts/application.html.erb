@@ -15,6 +15,7 @@
         <%= link_to 'Sign In', signin_climbers_path %>
       <% else %>
         <%= link_to 'Profile', @current_climber %>
+        <%= link_to 'Log Out', logout_climbers_path, method: 'put' %>
       <% end %>
     </li>
     <% if @current_scoresheet.present? %>

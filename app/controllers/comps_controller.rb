@@ -64,7 +64,8 @@ class CompsController < ApplicationController
 
   def join
     if current_climber.nil?
-      render_error(500, "Climber not logged in")
+     # render_error(500, "Climber not logged in")
+      redirect_to signin_climbers_path(comp: @comp.id)
       return
     end
 
