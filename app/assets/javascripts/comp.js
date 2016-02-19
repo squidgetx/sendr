@@ -4,7 +4,6 @@ var form_error = function(element, message) {
 }
 
 $(document).ready(function() {
-
   $('#ccs_login').on('ajax:success', function(event, data, status, xhr) {
     if (data.error) {
       if (data.message === "form_error") {
