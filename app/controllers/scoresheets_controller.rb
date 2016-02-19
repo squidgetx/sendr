@@ -3,7 +3,10 @@ class ScoresheetsController < ApplicationController
   before_action :find_scoresheet
 
   def index
-    @routes = @scoresheet.comp.routes
+  end
+
+  def scores
+    render json: @scoresheet
   end
 
   def climbs
@@ -17,6 +20,11 @@ class ScoresheetsController < ApplicationController
     else
       render_error(500, "speed save failed")
     end
+  end
+
+  def submit
+    session[:scoresheet] = nil
+    redirect_to root_path
   end
 
   def find_scoresheet

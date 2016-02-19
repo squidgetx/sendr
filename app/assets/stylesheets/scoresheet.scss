@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .sheet {
-    width: 300px;
+    width: $width;
 }
 
 .table {
@@ -29,12 +29,14 @@ li div {
 button div {
     display: inline-block;
     padding: 2px;
-    width: 30%;
+    width: 33%;
+    box-sizing: border-box;
 }
 
 button {
+    box-sizing: border-box;
     display: block;
-    width: 297px;
+    width: $width - 3px;
 }
 
 .tab {
@@ -57,24 +59,30 @@ button {
 .info {
     border: none;
     text-align: center;
-    width: 300px;
+    width: $width;
 }
 
 .registerButton {
-    left: 75px;
-    margin: 5px;
-    margin-left: 75px;
-    width: 150px;
+  display: block;
+  margin: 5px auto 5px auto ;
+  padding: 5px;
+  width: 150px;
 }
 
 .speedBox {
+    display: block;
     box-shadow: 3px 3px 2px #888888;
-    margin: 5px;
+    margin: 5px auto;
     text-align: left;
-    padding: 5px;
-    border: 1px solid black;
-    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;
+    //border: 1px solid black;
+    //border-radius: 5px;
     width: 255px;
+}
+
+.speedInput {
+  width: 150px;
 }
 
 .submitButton {

@@ -96,8 +96,9 @@ function renderSpeed() {
         title.appendChild(document.createTextNode("Attempt #" + (i+1)));
         speed.appendChild(title);
         speed.appendChild(document.createElement("br"));
-        speed.appendChild(document.createTextNode("Time: "));
+        //speed.appendChild(document.createTextNode("Time: "));
         var time = document.createElement("input");
+        time.className = "speedInput";
         time.type = "number";
         time.id = "time_" + i;
         speed.appendChild(time);

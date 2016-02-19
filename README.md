@@ -4,6 +4,8 @@
 
 `GET /comps/:id/leaders` - Get the leaders for the comp id
 
+`GET /scoresheet/scores` - gets the scores for the current scoresheet
+
 `PUT /scoresheet/speed` - Adds a new speed record (in `params[:time]`) to the current scoresheet
 
 `PUT /comps/:id/join` - The current user joins comp with id `:id`.

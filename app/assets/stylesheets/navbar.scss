@@ -1,15 +1,23 @@
-.navList {
-    box-sizing: border-box;
-    padding: 5px;
+.navList{
+  margin: 0;
+  box-sizing: border-box;
+  padding: 5px;
+  width: 100%;
+  background-color: #eee;
+  display: inline-block;
+ 
 }
 
 .nav {
    // border: 1px solid black;
    // border-radius: 5px;
    // box-shadow: 3px 3px 2px #888888;
-    display: inline-block;
-    padding: 10px;
-    background-color: #ddd;
+   float: right;
+   padding: 10px;
+}
+
+.nav.home {
+  float: left;
 }
 
 .nav a {
