@@ -4,6 +4,7 @@ class CreateClimbers < ActiveRecord::Migration
       t.string :name
       t.integer :ccs_id
       t.integer :college_id
+      t.integer :gender
 
       t.timestamps null: false
     end

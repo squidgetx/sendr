@@ -39,13 +39,14 @@ class Scoresheet < ActiveRecord::Base
   end
 
   def get_climbs
-    climbs = Route.joins("LEFT JOIN climbs on routes.id = climbs.route_id AND climbs.scoresheet_id = #{self.id} AND routes.comp_id = #{self.comp.id}").select("routes.*, climbs.attempts AS attempts, climbs.sent AS sent, climbs.witness AS witness")
+    Route.joins("LEFT JOIN climbs on routes.id = climbs.route_id AND climbs.scoresheet_id = #{self.id} AND routes.comp_id = #{self.comp.id}").select("routes.*, climbs.attempts AS attempts, climbs.sent AS sent, climbs.witness AS witness")
       .order('routes.points asc')
   end
 
   def update_scores
-    sport = self.climbs.includes(:route).where(routes: {discipline: "sport"}, climbs: {sent: true}).order("routes.points desc").limit(SPORTCOUNT).collect{|o| o.route.points}.sum
-    boulder = self.climbs.includes(:route).where(routes: {discipline: "boulder"}, climbs: {sent: true}).order("routes.points desc").limit(BOULDERCOUNT).collect{|o| o.route.points}.sum
+    sent = Route.joins(:climbs).where("climbs.scoresheet_id = ? AND climbs.sent = TRUE", self.id)
+    sport = sent.sport.collect(&:points).sum
+    boulder = sent.boulder.collect(&:points).sum
     self.sport_score = sport
     self.boulder_score = boulder
     self.save

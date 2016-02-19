@@ -5,5 +5,7 @@ class Route < ActiveRecord::Base
 
   validates :points, presence: true
 
+  enum discipline: [ :sport,  :boulder]
+
 
 end

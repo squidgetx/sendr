@@ -1,7 +1,7 @@
 class CreateComps < ActiveRecord::Migration
   def change
     create_table :comps do |t|
-      t.string :state
+      t.integer :state
       t.string :location
       t.date :date
 

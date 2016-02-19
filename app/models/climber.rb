@@ -6,4 +6,6 @@ class Climber < ActiveRecord::Base
 
   validates :ccs_id, presence: true
   validates :name, presence: true
+
+  enum gender: [:male, :female]
 end

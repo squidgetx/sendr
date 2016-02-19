@@ -7,6 +7,8 @@ class Comp < ActiveRecord::Base
   validates :date, presence: true
   validates :state, presence: true
 
+  enum state: [:closed, :open, :running]
+
   def join(climber_id)
     # Currently logged in climber
     # joins comp and creates new scoresheet
@@ -19,15 +21,6 @@ class Comp < ActiveRecord::Base
       boulder_score: 0,
       sport_score: 0,
     })
-  end
-
-  def self.open
-    # Get open comps
-    Comp.where("state = 'open'")
-  end
-
-  def closed
-    self.state == 'closed'
   end
 
   def leaders

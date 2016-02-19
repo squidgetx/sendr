@@ -13,20 +13,20 @@ College.create([{
 
 Climber.create([{
   name: "Ben Eskildsen",
-  ccs_id: 2345324,
+  ccs_id: 1,
   college_id: 1
 }, {
   name: "Sylvan Zheng",
-  ccs_id: 2453421,
+  ccs_id: 2,
   college_id: 1
 }, {
   name: "RIT guy",
-  ccs_id: 239042,
+  ccs_id: 3,
   college_id: 2
 }])
 
 Comp.create([{
-  state: "open",
+  state: :open,
   location: "Gravity Vault",
   date: Date.tomorrow,
 }]);
@@ -38,7 +38,7 @@ Route.create([
   color: "orange",
   points: 1400,
   notes: "arete off",
-  discipline: "sport",
+  discipline: :sport,
   grade: "5.13b",
   location: "orange crush"
 },
@@ -48,7 +48,7 @@ Route.create([
   color: "yellow",
   points: 1100,
   notes: "must do all moves static",
-  discipline: "sport",
+  discipline: :sport,
   grade: "5.11a",
   location: "PMRP"
 },
@@ -58,7 +58,7 @@ Route.create([
   color: "red",
   points: 1550,
   notes: "Sasha DiGiulian",
-  discipline: "sport",
+  discipline: :sport,
   grade: "5.14d",
   location: "The Motherlode"
 },
@@ -67,7 +67,7 @@ Route.create([
   name: "Iron Cross",
   color: "grey",
   points: 1350,
-  discipline: "boulder",
+  discipline: :boulder,
   grade: "V4",
   location: "Lincoln Woods"
 },
@@ -76,7 +76,7 @@ Route.create([
   name: "Black Jack Crack",
   color: "black",
   points: 1100,
-  discipline: "boulder",
+  discipline: :boulder,
   grade: "V2",
   location: "Topout area"
 },

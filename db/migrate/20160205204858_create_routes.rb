@@ -7,7 +7,7 @@ class CreateRoutes < ActiveRecord::Migration
       t.string :location
       t.string :notes
       t.integer :points
-      t.string :discipline
+      t.integer :discipline
       t.string :grade
 
       t.timestamps null: false

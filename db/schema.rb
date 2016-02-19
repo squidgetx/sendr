@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20160219025220) do
     t.string   "name"
     t.integer  "ccs_id"
     t.integer  "college_id"
+    t.integer  "gender"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160219025220) do
   end
 
   create_table "comps", force: :cascade do |t|
-    t.string   "state"
+    t.integer  "state"
     t.string   "location"
     t.date     "date"
     t.datetime "created_at", null: false
@@ -57,7 +58,7 @@ ActiveRecord::Schema.define(version: 20160219025220) do
     t.string   "location"
     t.string   "notes"
     t.integer  "points"
-    t.string   "discipline"
+    t.integer  "discipline"
     t.string   "grade"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -48,7 +48,7 @@ class ClimbersController < ApplicationController
     ccs = ccs.to_i
     c = login_climber ccs
     return if c.nil?
-    if params[:comp_id]
+    if params[:comp_id].present?
       #render action: :join, controller: :comp
       render_data(join_comp_path(params[:comp_id]))
       return
