@@ -1,6 +1,6 @@
 class ClimbersController < ApplicationController
 
-  before_action :find_climber
+  before_action :find_climber, except: [:signin, :login]
 
   def new
   end
