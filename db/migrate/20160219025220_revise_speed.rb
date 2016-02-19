@@ -4,5 +4,6 @@ class ReviseSpeed < ActiveRecord::Migration
     remove_column :scoresheets, :speed
     add_column :scoresheets, :speed_attempt1, :float
     add_column :scoresheets, :speed_attempt2, :float
+    add_column :scoresheets, :speed, :float
   end
 end

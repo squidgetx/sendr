@@ -24,25 +24,16 @@ class Scoresheet < ActiveRecord::Base
 
     if self.speed_attempt1.nil?
       self.speed_attempt1 = time
+      self.speed = time
     elsif self.speed_attempt2.nil?
       self.speed_attempt2 = time
+      if time < self.best_speed
+        self.speed = time
+      end
     else
       return false
     end
     self.save
-  end
-
-  def best_speed
-    if self.speed_attempt1.nil?
-      return nil
-    end
-
-    if self.speed_attempt2.nil?
-      return self.speed_attempt1
-    end
-    
-    return [self.speed_attempt1, self.speed_attempt2].min
-
   end
 
 
