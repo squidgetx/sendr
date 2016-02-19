@@ -1,4 +1,4 @@
-$(document).ready(getLeaderBoardInfoFromServer());
+$(document).ready(getLeaderBoardInfoFromServer);
 
 function getLeaderBoardInfoFromServer() {
     console.log(window.location.pathname);
@@ -6,6 +6,6 @@ function getLeaderBoardInfoFromServer() {
         url: window.location.pathname,
         method: 'get'
     }).done(function(leaderBoard) {
-        console.log(leaderBoard);
+       //  console.log(leaderBoard);
     });
 }
