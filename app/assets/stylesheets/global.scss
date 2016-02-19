@@ -1,3 +1,26 @@
 .hidden {
   display: none;
 }
+
+#content {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px;
+}
+
+ul {
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+button:hover {
+  cursor: pointer;
+}

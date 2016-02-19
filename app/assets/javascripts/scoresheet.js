@@ -13,20 +13,20 @@ function getClimbsFromServer() {
 }
 
 function focusTab(discipline) {
-    var boulder = document.getElementById("boulderTab");
-    var sport = document.getElementById("sportTab");
-    var speed = document.getElementById("speedTab");
+    var boulder = $("#boulderTab");
+    var sport = $("#sportTab");
+    var speed = $("#speedTab");
     var tabs = {boulder: boulder, sport: sport, speed: speed};
     for (var disc in tabs) {
         var tab = tabs[disc];
         if (!tab) {
             continue;
         }
-        tab.style.width = "25%";
-        tab.style.fontWeight = "normal";
+        tab.addClass("inactive");
+        tab.removeClass("active");
         if (disc == discipline) {
-            tab.style.width = "50%";
-            tab.style.fontWeight = "bold";
+          tab.addClass("active");
+          tab.removeClass("inactive");
         }
     }
 }

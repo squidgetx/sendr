@@ -1,11 +1,17 @@
 .navList {
-    padding-left: 25px;
-    margin: 5px;
+    box-sizing: border-box;
+    padding: 5px;
 }
+
 .nav {
-    border: 1px solid black;
-    border-radius: 5px;
-    box-shadow: 3px 3px 2px #888888;
+   // border: 1px solid black;
+   // border-radius: 5px;
+   // box-shadow: 3px 3px 2px #888888;
     display: inline-block;
-    padding: 6px;
+    padding: 10px;
+    background-color: #ddd;
+}
+
+.nav a {
+  color: #111;
 }
