@@ -1,6 +1,6 @@
 class CompsController < ApplicationController
 
-  before_action :find_comp, except: [:index]
+  before_action :find_comp, except: [:index, :new, :create]
 
   def index
     # Homepage
@@ -23,14 +23,15 @@ class CompsController < ApplicationController
   end
 
   def new
+    @comp = Comp.new
   end
 
   def create
     @comp = Comp.new(comp_params)
     if @comp.save
-
+      redirect_to @comp
     else
-
+      redirect_to request.referer
     end
   end
 

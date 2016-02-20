@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'left_join'
 # gem 'bootstrap-sass'
 gem 'font-awesome-rails'
+gem 'pickadate-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
