@@ -1,0 +1,18 @@
+<h2>
+  NEW COLLEGE
+</h2>
+
+
+<%= form_for @college do |f| %>
+  <%= render partial: 'layouts/errors', locals: {obj: @college} %>
+
+  <h4>
+    NAME
+  </h4>
+
+  <%= f.text_field(:name, class: 'input-large') %>
+  <br />
+  <br />
+  <%= f.submit("SUBMIT", class: 'block-link') %>
+
+<% end %>

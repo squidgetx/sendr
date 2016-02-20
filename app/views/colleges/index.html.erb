@@ -1,0 +1,31 @@
+<ul>
+<% @colleges.each do |c| %>
+  <li class='college-card'>
+  <div class='cname' id='display<%= c.id %>'><%= c.name %></div>
+  <div class='cform hidden' id='form<%= c.id %>'>
+    <%= form_for :college, url: college_path(c), method: :patch do |f| %>
+      <%= f.text_field :name, value: c.name %>
+      <%= f.submit %>
+    <% end %>
+  </div>
+
+
+    <%= iconbutton('fa-edit c-edit', c.id) %>
+    <%= iconbutton('fa-close', c.id) %>
+
+  </li>
+<% end %>
+<li>
+<div class='cnew hidden'>
+<%= form_for :college, url: colleges_path, method: :post do |f| %>
+  <%= f.text_field :name, placeholder: 'Name' %>
+  <%= f.submit %>
+<% end %>
+</div>
+<div class='new-college'>
+New
+<%= iconbutton 'fa-plus' %>
+</div>
+
+</li>
+</ul>

@@ -2,18 +2,7 @@
   NEW COMP
 </h2>
 <%= form_for @comp do |f| %>
-
-  <% if @comp.errors.any? %>
-    <div class='error-explanation'>
-      <p>Sorry!</p>
-      <ul>
-        <% @comp.errors.full_messages.each do |msg| %>
-          <li>
-            <%= msg %>
-          </li>
-        <% end %>
-      </div>
-    <% end %>
+  <%= render partial: 'layouts/errors', locals: {obj: @comp} %>
 
   <h4>
     LOCATION
