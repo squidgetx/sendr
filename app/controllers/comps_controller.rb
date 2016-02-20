@@ -10,7 +10,9 @@ class CompsController < ApplicationController
     if @current_scoresheet.present?
       redirect_to scoresheet_path
     end
-    @comps = Comp.open
+    @comps = Comp.where("state = ? OR state = ?", 1, 2)
+    @upcoming = Comp.closed.where("date >= ?", Date.today)
+    @recent = Comp.closed.where("date < ?", Date.today)
   end
 
   def show

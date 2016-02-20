@@ -1,14 +1,30 @@
-<h2>
-  JOIN A COMP
-</h2>
+<% if @comps.empty? %>
+  <h3>
+    REST DAY TODAY: NO CURRENTLY OPEN COMPS!
+  </h3>
 
-<ul>
-<% @comps.each do |c| %>
-  <a href = "<%= join_comp_path(c) %>" class='block-link'>
-    <div class='comp-card'>
-      <li><%= c.location.upcase %></li>
-      <li><%= c.date %></li>
-    </div>
-  </a>
+<% else %>
+  <h2>
+    JOIN A COMP
+  </h2>
+
+  <%= render partial: 'compcard', locals: {comps: @comps} %>
 <% end %>
-</ul>
+
+<% unless @upcoming.empty? %>
+  <h3>
+    UPCOMING
+  </h3>
+
+  <%= render partial: 'compcard', locals: {comps: @upcoming} %>
+<% end %>
+
+<% unless @recent.empty? %>
+  <h3>
+    RECENT
+  </h3>
+
+  <%= render partial: 'compcard', locals: {comps: @recent} %>
+<% end %>
+
+

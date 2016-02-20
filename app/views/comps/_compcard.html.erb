@@ -1,0 +1,11 @@
+<ul>
+<% comps.each do |c| %>
+<a href = "<%= join_comp_path(c) %>" class='block-link'>
+    <div class='comp-card'>
+      <li><%= c.location.upcase %></li>
+      <li><%= c.date %></li>
+    </div>
+  </a>
+<% end %>
+  </ul>
+
