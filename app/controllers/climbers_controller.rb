@@ -4,7 +4,7 @@ class ClimbersController < ApplicationController
 
   def new
   end
-  
+
   def create
     @climber = Climber.new(climber_params)
     if @climber.save
@@ -31,13 +31,13 @@ class ClimbersController < ApplicationController
   def update
     @climber = @climber.update(climber_params)
     if @climber
-    else 
+    else
     end
   end
 
   def destroy
   end
-  
+
   def login
     ccs = params[:ccs_id]
     if ccs.nil? || ccs.empty? || ccs.to_i == 0

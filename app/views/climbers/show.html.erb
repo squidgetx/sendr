@@ -1,3 +1,5 @@
 <h1>Profile</h1>
-<h2><%= @climber.name %>
+<h2><%= @climber.name %></h2>
 <h3><%= @climber.college.name if @climber.college %></h3>
+<%= @climber.climbs.to_json %>
+<%= @climber.climbs[0] %>
