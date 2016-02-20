@@ -31,7 +31,7 @@ class CompsController < ApplicationController
     if @comp.save
       redirect_to @comp
     else
-      redirect_to request.referer
+      render 'new'
     end
   end
 

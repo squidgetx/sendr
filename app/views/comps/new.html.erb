@@ -1,8 +1,19 @@
 <h2>
   NEW COMP
 </h2>
-
 <%= form_for @comp do |f| %>
+
+  <% if @comp.errors.any? %>
+    <div class='error-explanation'>
+      <p>Sorry!</p>
+      <ul>
+        <% @comp.errors.full_messages.each do |msg| %>
+          <li>
+            <%= msg %>
+          </li>
+        <% end %>
+      </div>
+    <% end %>
 
   <h4>
     LOCATION
