@@ -6,17 +6,21 @@
 
 }
 
-.comp-join {
+.block-link {
   border: 3px solid black;
   display: block;
   width: 256px;
   margin: auto;
   padding: 10px;
   box-sizing: border-box;
+  background-color: white;
+  color: black;
+  font-family: 'Lato';
 }
 
-.comp-join:hover, .comp-join:focus {
+.block-link:hover, .block-link:focus {
   background-color: #111;
   color: #eee;
+  cursor: pointer;
 }
   

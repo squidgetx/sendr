@@ -1,33 +1,60 @@
 <div id="sign-in">
-<h1> Sign In </h1>
+<h1> SIGN IN </h1>
 
 <%= form_tag("/climbers/login", method: "put", remote: true, id: 'ccs_login') do %>
-  <%= label_tag "CCS Number" %>
-  <%= text_field_tag(:ccs_id) %>
+  <h4>
+    CCS NUMBER
+  </h4>
+  <br />
+  <%= text_field_tag(:ccs_id, "", class: 'input-large')%>
+  <br />
   <%= text_field_tag(:comp_id, @comp, {type: "hidden"}) %>
-  <%= submit_tag("enter") %>
+  <br />
+  <%= submit_tag("SUBMIT", class: 'block-link') %>
+  <br />
+  <br />
 <% end %>
   </div>
 
 <div id="new_climber" class="hidden" >
-  <h1> Register new climber</h1>
+  <h1> REGISTER</h1>
   <%= form_for(@climber) do |f| %>
-  <%= f.text_field :ccs_id, type: "hidden" %>
+    <h4>
+      CCS NUMBER
+    </h4>
+
+    <%= f.text_field :ccs_id, class: 'input-large' %>
+   <br />
 
   <%= text_field_tag(:comp_id, @comp, {type: "hidden"}) %>
 
+  <h4>
+    NAME
+  </h4>
 
-  <%= f.label "Name" %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class: 'input-large' %>
+   <br />
+   
+  <h4>
+    GENDER
+  </h4>
 
-  <%= f.select(:gender, [['Female', :female], ['Male', :male]]) %>
-  
-  <%= f.select(:college_id) do %>
+  <%= f.select(:gender, [['Female', :female], ['Male', :male]], {}, { class: 'select-large' }) %>
+
+   <br />
+    
+  <h4>
+    COLLEGE
+  </h4>
+
+  <%= f.select(:college_id, {}, {}, { class: 'select-large' }) do %>
     <% College.all.each do |c| %> 
       <%= content_tag(:option, c.name,  value: c.id) %>
     <% end %>
   <% end %>
-    <%= f.submit "Done"%>
+   <br />
+   <br />
+    <%= f.submit "SUBMIT", class: 'block-link' %>
 
   <% end %>
 
