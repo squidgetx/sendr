@@ -1,31 +1,5 @@
 <h2>
   NEW COMP
 </h2>
-<%= form_for @comp do |f| %>
-  <%= render partial: 'layouts/errors', locals: {obj: @comp} %>
 
-  <h4>
-    LOCATION
-  </h4>
-
-  <%= f.text_field(:location, class: 'input-large') %>
-
-  <h4>
-    DATE
-  </h4>
-
-  <%= f.date_field(:date, class: 'input-large datepicker') %>
-  <h4>
-    STATUS
-  </h4>
-
-  <%= f.select(:state, [['Closed', :closed], ['Open', :open]], {}, {class: 'select-large'}) %>
-  
-  <br />
-  <br />
-
-  
-
-  <%= f.submit("SUBMIT", class: 'block-link') %>
-
-<% end %>
+<%= render partial: 'form' %>

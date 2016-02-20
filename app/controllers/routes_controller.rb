@@ -1,5 +1,5 @@
 class RoutesController < ApplicationController
-  before_action :find_route, except: [:index]
+  before_action :find_route, except: [:index, :create]
 
   def index
   end
@@ -12,6 +12,7 @@ class RoutesController < ApplicationController
     if @route.save
     else
     end
+    redirect_to request.referer
   end
 
   def edit
@@ -22,6 +23,7 @@ class RoutesController < ApplicationController
     if @route
     else
     end
+    redirect_to request.referer
   end
 
   def destroy
@@ -51,6 +53,10 @@ class RoutesController < ApplicationController
   end
 
   private
+  
+  def route_params
+    params.require(:route).permit(:name, :grade, :points, :comp_id, :location, :color, :notes, :discipline)
+  end
 
   def find_route
     @route = Route.find(params[:id])

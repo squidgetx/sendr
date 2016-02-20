@@ -20,6 +20,10 @@ class CompsController < ApplicationController
     # each category
   end
 
+  def edit 
+    @routes = @comp.routes.order(discipline: :asc, points: :desc)
+  end
+
   def leaders
     render json: @comp.leaders
   end
@@ -37,9 +41,6 @@ class CompsController < ApplicationController
     end
   end
 
-  def edit
-  end
-  
   def update
     @comp = @comp.update(comp_params)
     if @comp

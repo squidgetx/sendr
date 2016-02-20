@@ -1,0 +1,32 @@
+<% # editing comps %>
+
+<h2>
+  EDIT COMP
+</h2>
+
+<%= render partial: 'form' %>
+<ul>
+  <% @routes.each do |route| %>
+    <%= form_for :route, url: route_path(route), method: :patch do |f| %>
+      <%= f.text_field :name, value: route.name %>
+      <%= f.number_field :points, value: route.points %>
+      <%= f.text_field :color, value: route.color %>
+      <%= f.text_field :grade, value: route.grade %>
+      <%= f.select(:discipline, [['Sport',  :sport], ['Boulder', :boulder]], selected: route.discipline)%>
+
+      <%= f.submit %>
+    <% end %>
+    
+  <% end %>
+  <%= form_for :route, url: routes_path, method: :post do |f| %>
+      <%= f.text_field :name, placeholder: 'Name' %>
+      <%= f.number_field :points, placeholder: 'Points' %>
+      <%= f.text_field :color, placeholder: 'Color' %>
+      <%= f.text_field :grade, placeholder: 'Grade' %>
+      <%= f.text_field :comp_id, value: @comp.id, type: :hidden %>
+      <%= f.select(:discipline, [['Sport',  :sport], ['Boulder', :boulder]])%>
+
+      <%= f.submit %>
+  <% end %>
+  </ul>
+
