@@ -43,13 +43,15 @@
 
    <br />
     
-  <h4>
-    COLLEGE
-  </h4>
+  <% if College.count > 0 %>
+    <h4>
+      COLLEGE
+    </h4>
 
-  <%= f.select(:college_id, {}, {}, { class: 'select-large' }) do %>
-    <% College.all.each do |c| %> 
-      <%= content_tag(:option, c.name,  value: c.id) %>
+    <%= f.select(:college_id, {}, {}, { class: 'select-large' }) do %>
+      <% College.all.each do |c| %> 
+        <%= content_tag(:option, c.name,  value: c.id) %>
+      <% end %>
     <% end %>
   <% end %>
    <br />
